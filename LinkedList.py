@@ -13,7 +13,7 @@ class LinkedList:
             print(value.data)
             value = value.next
 
-    def transverse(self):
+    def traverse(self):
         if self.head is None:
             print("This is an empty list")
             return 0
@@ -54,6 +54,21 @@ class LinkedList:
             reverse.head = address[0]
             return reverse
 
+    def append(self,linkedlist):
+        if linkedlist.head is None:
+            linkedlist.head = Node(self,None)
+        else:
+            n = linkedlist.head
+            while n.next is not None:
+                n = n.next
+
+            n.next = Node(self,None)
+        return linkedlist      
+
+    def prepend(self,linkedlist):
+        cutename = linkedlist.head
+        linkedlist.head = Node(self,cutename)
+        return linkedlist
 
 linkedlist = LinkedList()
 third = Node(1,None)
@@ -61,18 +76,11 @@ second = Node(0,third)
 linkedlist.head = Node(2,second)
 
 LinkedList.printLinkedList(linkedlist)
-LinkedList.transverse(linkedlist)
+LinkedList.traverse(linkedlist)
 print(LinkedList.length(linkedlist))
-LinkedList.transverse(LinkedList.reverse(linkedlist))
- #
- #
- #
- #
- #
- #
- #
- #
- #
- #
- #
- #
+LinkedList.traverse(LinkedList.reverse(linkedlist))
+new = LinkedList.append(4,linkedlist)
+LinkedList.traverse(new)
+new2 = LinkedList.prepend(4,linkedlist)
+print('prepend test')
+LinkedList.traverse(new2)
